@@ -6,46 +6,42 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		
-		<!-- СТИЛИ ДЛЯ ФОРМЫ И ЗАГОЛОВКА (ЖЕСТКАЯ ФИКСАЦИЯ) -->
+		<!-- СТИЛИ ДЛЯ ФОРМЫ И ЗАГОЛОВКА -->
 		<style>
-			/* 1. Ломаем стандартную сетку шаблона и делаем колонку */
+			/* 1. Убиваем Flexbox шаблона и делаем обычный блочный поток */
 			#cta .inner {
-				display: flex !important;
-				flex-direction: column !important;
-				align-items: center !important;
-				justify-content: center !important;
-				text-align: center !important;
-				max-width: 100% !important;
-				padding: 4em 1em !important;
-			}
-
-			/* 2. Центрируем блок с текстом */
-			#cta .inner header {
+				display: block !important;
 				text-align: center !important;
 				max-width: 800px !important;
+				margin: 0 auto !important;
+				padding: 3em 1em !important;
+			}
+
+			/* 2. Заголовок и текст */
+			#cta header {
+				text-align: center !important;
 				margin: 0 auto 2.5em auto !important;
 			}
 
-			/* 3. Фиксируем заголовок (чтобы не был слишком огромным) */
-			#cta .inner header h2 {
+			#cta header h2 {
 				font-size: 2em !important;
 				line-height: 1.3 !important;
 				letter-spacing: 0.05em !important;
 				text-align: center !important;
-				margin-bottom: 1em !important;
+				margin-bottom: 0.5em !important;
 				white-space: normal !important;
 				text-wrap: balance !important;
 			}
 
-			/* 4. Фиксируем текст под заголовком */
-			#cta .inner header p {
+			#cta header p {
 				text-align: center !important;
 				font-size: 1.1em !important;
 				margin: 0 !important;
 			}
 
-			/* 5. Идеально центрируем саму форму */
+			/* 3. Форма */
 			#contact-form {
+				display: block !important;
 				width: 100% !important;
 				max-width: 600px !important;
 				margin: 0 auto !important;
@@ -56,7 +52,7 @@
 				box-sizing: border-box;
 			}
 
-			/* 6. Поля ввода */
+			/* 4. Поля ввода */
 			#contact-form input[type="text"],
 			#contact-form input[type="tel"],
 			#contact-form textarea {
