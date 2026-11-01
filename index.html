@@ -119,11 +119,31 @@
 				<div class="inner">
 					<header>
 						<h2>Не ждите, пока техника сломается окончательно</h2>
-						<p>Оставьте заявку или позвоните прямо сейчас. Приеду в течение 2 часов.</p>
+						<p>Оставьте заявку, и я свяжусь с вами в течение 15 минут. Или позвоните прямо сейчас!</p>
 					</header>
+					
+					<!-- ФОРМА ЗАЯВКИ -->
+					<form id="contact-form" style="margin-bottom: 20px;">
+						<div class="row gtr-uniform">
+							<div class="col-6 col-12-xsmall">
+								<input type="text" name="name" id="name" placeholder="Ваше имя" required />
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<input type="tel" name="phone" id="phone" placeholder="Ваш телефон" required />
+							</div>
+							<div class="col-12">
+								<textarea name="message" id="message" placeholder="Опишите проблему (что случилось с техникой?)" rows="3"></textarea>
+							</div>
+							<div class="col-12">
+								<ul class="actions">
+									<li><button type="submit" class="button primary fit">Отправить заявку</button></li>
+								</ul>
+							</div>
+						</div>
+					</form>
+
 					<ul class="actions stacked">
-						<li><a href="tel:+79502217218" class="button fit primary">Позвонить (950) 221-72-18</a></li>
-						<li><a href="https://wa.me/79502217218" class="button fit" target="_blank">Написать в WhatsApp</a></li>
+						<li><a href="tel:+79502217218" class="button fit">Позвонить (950) 221-72-18</a></li>
 					</ul>
 				</div>
 			</section>
@@ -140,6 +160,7 @@
 
 		</div>
 
+		<!-- СКРИПТЫ ШАБЛОНА -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -147,6 +168,45 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+
+		<!-- СКРИПТ ОТПРАВКИ ФОРМЫ В CLOUDFLARE -->
+		<script>
+			document.getElementById('contact-form').addEventListener('submit', async function(e) {
+				e.preventDefault();
+				
+				const formData = new FormData(this);
+				const data = Object.fromEntries(formData.entries());
+				
+				// Твой URL из Cloudflare Worker
+				const workerUrl = 'https://viktor-bot.xdxd222www.workers.dev/'; 
+				
+				const submitBtn = this.querySelector('button[type="submit"]');
+				const originalText = submitBtn.innerText;
+				submitBtn.innerText = 'Отправка...';
+				submitBtn.disabled = true;
+
+				try {
+					const response = await fetch(workerUrl, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify(data)
+					});
+					
+					if (response.ok) {
+						alert('Заявка успешно отправлена! Мастер свяжется с вами.');
+						this.reset();
+					} else {
+						alert('Ошибка на сервере. Попробуйте позже или позвоните.');
+					}
+				} catch (error) {
+					console.error('Ошибка:', error);
+					alert('Ошибка сети. Проверьте подключение к интернету.');
+				} finally {
+					submitBtn.innerText = originalText;
+					submitBtn.disabled = false;
+				}
+			});
+		</script>
 
 	</body>
 </html>
