@@ -6,40 +6,46 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-    /* Ломаем стандартную сетку шаблона для блока с формой */
-    #cta .inner {
-        flex-direction: column !important; /* Ставим всё в одну колонку */
-        text-align: center;
-        max-width: 800px; /* Ограничиваем ширину, чтобы не растягивалось на весь экран */
-        margin: 0 auto;
-    }
+			/* Принудительно делаем блок вертикальным */
+			#cta .inner {
+				display: block !important;
+				text-align: center;
+				max-width: 800px;
+				margin: 0 auto;
+			}
 
-    /* Настраиваем саму форму */
-    #contact-form {
-        width: 100%;
-        margin-bottom: 2em;
-        text-align: left;
-    }
+			/* Настраиваем форму */
+			#contact-form {
+				max-width: 600px;
+				margin: 2em auto;
+				text-align: left;
+			}
 
-    /* Делаем поля ввода темными и красивыми (под стиль сайта) */
-    #contact-form input, #contact-form textarea {
-        background: rgba(255, 255, 255, 0.1) !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        color: #ffffff !important;
-        border-radius: 4px !important;
-        padding: 0.75em !important;
-    }
+			/* Поля ввода */
+			#contact-form input[type="text"],
+			#contact-form input[type="tel"],
+			#contact-form textarea {
+				width: 100%;
+				background: rgba(0, 0, 0, 0.2) !important;
+				border: 1px solid rgba(255, 255, 255, 0.2) !important;
+				border-radius: 4px !important;
+				padding: 1em !important;
+				color: #ffffff !important;
+				margin-bottom: 1em;
+				box-sizing: border-box;
+			}
 
-    /* Меняем цвет плейсхолдеров (текста-подсказки) на серый */
-    #contact-form input::placeholder, #contact-form textarea::placeholder {
-        color: rgba(255, 255, 255, 0.5) !important;
-    }
-    
-    /* Убираем лишние отступы у формы */
-    #contact-form .row {
-        margin: 0 0 1em 0 !important;
-    }
-</style>
+			/* Цвет подсказок */
+			#contact-form input::placeholder,
+			#contact-form textarea::placeholder {
+				color: rgba(255, 255, 255, 0.5) !important;
+			}
+			
+			/* Кнопка отправки на всю ширину */
+			#contact-form button {
+				width: 100%;
+			}
+		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="landing is-preload">
@@ -157,27 +163,14 @@
 						<p>Оставьте заявку, и я свяжусь с вами в течение 15 минут. Или позвоните прямо сейчас!</p>
 					</header>
 					
-					<!-- ФОРМА ЗАЯВКИ -->
-					<form id="contact-form" style="margin-bottom: 20px;">
-						<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="name" id="name" placeholder="Ваше имя" required />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="tel" name="phone" id="phone" placeholder="Ваш телефон" required />
-							</div>
-							<div class="col-12">
-								<textarea name="message" id="message" placeholder="Опишите проблему (что случилось с техникой?)" rows="3"></textarea>
-							</div>
-							<div class="col-12">
-								<ul class="actions">
-									<li><button type="submit" class="button primary fit">Отправить заявку</button></li>
-								</ul>
-							</div>
-						</div>
+					<form id="contact-form">
+						<input type="text" name="name" id="name" placeholder="Ваше имя" required />
+						<input type="tel" name="phone" id="phone" placeholder="Ваш телефон" required />
+						<textarea name="message" id="message" placeholder="Опишите проблему (что случилось с техникой?)" rows="3"></textarea>
+						<button type="submit" class="button primary">Отправить заявку</button>
 					</form>
 
-					<ul class="actions stacked">
+					<ul class="actions stacked" style="margin-top: 2em;">
 						<li><a href="tel:+79502217218" class="button fit">Позвонить (950) 221-72-18</a></li>
 					</ul>
 				</div>
@@ -195,7 +188,6 @@
 
 		</div>
 
-		<!-- СКРИПТЫ ШАБЛОНА -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -204,7 +196,6 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
-		<!-- СКРИПТ ОТПРАВКИ ФОРМЫ В CLOUDFLARE -->
 		<script>
 			document.getElementById('contact-form').addEventListener('submit', async function(e) {
 				e.preventDefault();
@@ -212,7 +203,6 @@
 				const formData = new FormData(this);
 				const data = Object.fromEntries(formData.entries());
 				
-				// Твой URL из Cloudflare Worker
 				const workerUrl = 'https://viktor-bot.xdxd222www.workers.dev/'; 
 				
 				const submitBtn = this.querySelector('button[type="submit"]');
