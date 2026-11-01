@@ -6,15 +6,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		
-		<!-- СТИЛИ ДЛЯ ФОРМЫ -->
+		<!-- СТИЛИ ДЛЯ ФОРМЫ И ЗАГОЛОВКА -->
 		<style>
+			/* Центрируем весь блок */
 			#cta .inner {
 				display: block !important;
-				text-align: center;
-				max-width: 800px;
-				margin: 0 auto;
+				text-align: center !important;
+				max-width: 900px !important;
+				margin: 0 auto !important;
 			}
 
+			/* ЖЕСТКО ФИКСИМ ЗАГОЛОВОК */
+			#cta .inner header h2 {
+				font-size: 1.7em !important; /* Чуть уменьшаем шрифт, чтобы влезло */
+				line-height: 1.4 !important;
+				letter-spacing: 0.05em !important; /* Убираем разлетающиеся буквы */
+				text-align: center !important;
+				max-width: 100% !important;
+				margin: 0 auto 1em auto !important;
+				text-wrap: balance !important; /* Красивые переносы */
+				white-space: normal !important; /* Разрешаем перенос строк */
+			}
+
+			/* Сама форма */
 			#contact-form {
 				max-width: 650px;
 				margin: 2em auto 0 auto;
@@ -25,32 +39,29 @@
 				box-sizing: border-box;
 			}
 
+			/* Поля ввода */
 			#contact-form input[type="text"],
 			#contact-form input[type="tel"],
 			#contact-form textarea {
-				width: 100%;
+				width: 100% !important;
 				background: rgba(0, 0, 0, 0.2) !important;
 				border: 1px solid rgba(255, 255, 255, 0.2) !important;
 				border-radius: 4px !important;
 				padding: 1em !important;
 				color: #ffffff !important;
-				margin-bottom: 1em;
-				box-sizing: border-box;
+				margin-bottom: 1em !important;
+				box-sizing: border-box !important;
 			}
 
+			/* Подсказки в полях */
 			#contact-form input::placeholder,
 			#contact-form textarea::placeholder {
 				color: rgba(255, 255, 255, 0.5) !important;
 			}
 			
+			/* Кнопка отправки */
 			#contact-form button {
-				width: 100%;
-			}
-						/* Выравниваем заголовок в блоке CTA */
-			#cta h2 {
-				font-size: 1.8em !important; /* Уменьшаем размер, чтобы влезало лучше */
-				line-height: 1.3 !important;
-				text-wrap: balance; /* Магия, которая делает переносы красивыми */
+				width: 100% !important;
 			}
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
