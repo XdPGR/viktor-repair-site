@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ru">
 	<head>
 		<title>Мастер Виктор | Ремонт бытовой техники в Омске</title>
 		<meta charset="utf-8" />
@@ -16,9 +16,13 @@
 			}
 
 			#contact-form {
-				max-width: 600px;
-				margin: 2em auto;
+				max-width: 650px;
+				margin: 2em auto 0 auto;
 				text-align: left;
+				background: rgba(255, 255, 255, 0.05);
+				padding: 2em;
+				border-radius: 8px;
+				box-sizing: border-box;
 			}
 
 			#contact-form input[type="text"],
@@ -121,7 +125,7 @@
 			<section id="three" class="wrapper style3 special">
 				<div class="inner">
 					<header class="major">
-						<h2>С какими поломками к нам обращаются</h2>
+						<h2>С какими поломками ко мне обращаются</h2>
 						<p>Я чиню всё: от простых засоров до сложной электроники.</p>
 					</header>
 					<ul class="features">
@@ -157,7 +161,7 @@
 				<div class="inner">
 					<header>
 						<h2>Не ждите, пока техника сломается окончательно</h2>
-						<p>Оставьте заявку, и я свяжусь с вами в течение 15 минут. Или позвоните прямо сейчас!</p>
+						<p>Оставьте заявку, и я свяжусь с вами в течение 15 минут.</p>
 					</header>
 					
 					<form id="contact-form">
@@ -166,10 +170,6 @@
 						<textarea name="message" id="message" placeholder="Опишите проблему (что случилось с техникой?)" rows="3"></textarea>
 						<button type="submit" class="button primary">Отправить заявку</button>
 					</form>
-
-					<ul class="actions stacked" style="margin-top: 2em;">
-						<li><a href="tel:+79502217218" class="button fit">Позвонить (950) 221-72-18</a></li>
-					</ul>
 				</div>
 			</section>
 
@@ -194,7 +194,7 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
-		<!-- СКРИПТ ОТПРАВКИ ФОРМЫ -->
+		<!-- СКРИПТ ОТПРАВКИ ФОРМЫ В CLOUDFLARE -->
 		<script>
 			document.getElementById('contact-form').addEventListener('submit', async function(e) {
 				e.preventDefault();
