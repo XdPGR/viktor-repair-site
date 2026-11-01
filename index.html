@@ -6,32 +6,49 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		
-		<!-- СТИЛИ ДЛЯ ФОРМЫ И ЗАГОЛОВКА -->
+		<!-- СТИЛИ ДЛЯ ФОРМЫ И ЗАГОЛОВКА (ЖЕСТКАЯ ФИКСАЦИЯ) -->
 		<style>
-			/* Центрируем весь блок */
+			/* 1. Ломаем стандартную сетку шаблона и делаем колонку */
 			#cta .inner {
-				display: block !important;
-				text-align: center !important;
-				max-width: 900px !important;
-				margin: 0 auto !important;
-			}
-
-			/* ЖЕСТКО ФИКСИМ ЗАГОЛОВОК */
-			#cta .inner header h2 {
-				font-size: 1.7em !important; /* Чуть уменьшаем шрифт, чтобы влезло */
-				line-height: 1.4 !important;
-				letter-spacing: 0.05em !important; /* Убираем разлетающиеся буквы */
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+				justify-content: center !important;
 				text-align: center !important;
 				max-width: 100% !important;
-				margin: 0 auto 1em auto !important;
-				text-wrap: balance !important; /* Красивые переносы */
-				white-space: normal !important; /* Разрешаем перенос строк */
+				padding: 4em 1em !important;
 			}
 
-			/* Сама форма */
+			/* 2. Центрируем блок с текстом */
+			#cta .inner header {
+				text-align: center !important;
+				max-width: 800px !important;
+				margin: 0 auto 2.5em auto !important;
+			}
+
+			/* 3. Фиксируем заголовок (чтобы не был слишком огромным) */
+			#cta .inner header h2 {
+				font-size: 2em !important;
+				line-height: 1.3 !important;
+				letter-spacing: 0.05em !important;
+				text-align: center !important;
+				margin-bottom: 1em !important;
+				white-space: normal !important;
+				text-wrap: balance !important;
+			}
+
+			/* 4. Фиксируем текст под заголовком */
+			#cta .inner header p {
+				text-align: center !important;
+				font-size: 1.1em !important;
+				margin: 0 !important;
+			}
+
+			/* 5. Идеально центрируем саму форму */
 			#contact-form {
-				max-width: 650px;
-				margin: 2em auto 0 auto;
+				width: 100% !important;
+				max-width: 600px !important;
+				margin: 0 auto !important;
 				text-align: left;
 				background: rgba(255, 255, 255, 0.05);
 				padding: 2em;
@@ -39,10 +56,11 @@
 				box-sizing: border-box;
 			}
 
-			/* Поля ввода */
+			/* 6. Поля ввода */
 			#contact-form input[type="text"],
 			#contact-form input[type="tel"],
 			#contact-form textarea {
+				display: block !important;
 				width: 100% !important;
 				background: rgba(0, 0, 0, 0.2) !important;
 				border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -53,15 +71,15 @@
 				box-sizing: border-box !important;
 			}
 
-			/* Подсказки в полях */
 			#contact-form input::placeholder,
 			#contact-form textarea::placeholder {
 				color: rgba(255, 255, 255, 0.5) !important;
 			}
 			
-			/* Кнопка отправки */
 			#contact-form button {
+				display: block !important;
 				width: 100% !important;
+				margin: 0 !important;
 			}
 		</style>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
